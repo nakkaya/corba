@@ -26,6 +26,7 @@ private:
   PololuQTRSensorsRC qtr;
 
   int position;
+  int bwMean;
 
   int getBearing();
 };

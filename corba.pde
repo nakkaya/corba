@@ -22,7 +22,7 @@ void setup(){
   pinMode(ledPin, OUTPUT); 
 
   // waitButton();
-  //navigation.calibrate();
+  navigation.calibrate();
 
   engine.straight();
 

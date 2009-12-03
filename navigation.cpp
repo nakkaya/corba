@@ -31,6 +31,7 @@ int navigation::getBearing(){
   int left = val[2];
   
 
+  Serial.print("mean: "); Serial.println(bwMean);
   //Serial.print("sol: "); Serial.println(left);
   //Serial.print("orta: "); Serial.println(middle);
   //Serial.print("sag: "); Serial.println(right);
@@ -45,8 +46,8 @@ int navigation::getBearing(){
     return LEFT;
   }
 
-  if (middle > 250 &&  position == LEFT ) return RIGHT;
-  if (middle > 250 &&  position == RIGHT ) return LEFT;
+  if (middle > bwMean &&  position == LEFT ) return RIGHT;
+  if (middle > bwMean &&  position == RIGHT ) return LEFT;
     
 
   if(middle <= left && middle <= right){
@@ -57,29 +58,38 @@ int navigation::getBearing(){
 
 
 void navigation::calibrate(){
-  engin.right();
-  engin.forward(255,100);
+  // engin.right();
+  // engin.forward(255,100);
 
-  for (int i = 0; i < 84; i++){
-    qtr.calibrate();
-    delay(20);
-  }
+  // for (int i = 0; i < 84; i++){
+  //   qtr.calibrate();
+  //   delay(20);
+  // }
 
-  engin.reverse(255,100);
+  // engin.reverse(255,100);
 
-  engin.straight();
-  for (int i = 0; i < 84; i++){
-    qtr.calibrate();
-    delay(20);
-  }
+  // engin.straight();
+  // for (int i = 0; i < 84; i++){
+  //   qtr.calibrate();
+  //   delay(20);
+  // }
 
-  engin.left();
-  engin.forward(255,100);
+  // engin.left();
+  // engin.forward(255,100);
 
-  for (int i = 0; i < 84; i++){
-    qtr.calibrate();
-    delay(20);
-  }
+  // for (int i = 0; i < 84; i++){
+  //   qtr.calibrate();
+  //   delay(20);
+  // }
 
-  engin.reverse(255,100);
+  // engin.reverse(255,100);
+
+  unsigned int val[3];
+  qtr.read(val);
+  
+  int right = val[0];
+  int middle = val[1];
+  int left = val[2];
+
+  bwMean = ((right - middle) + (left - middle))/2;
 }
