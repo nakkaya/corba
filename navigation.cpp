@@ -46,14 +46,13 @@ int navigation::getBearing(){
     return LEFT;
   }
 
-  if (middle > bwMean &&  position == LEFT ) return RIGHT;
-  if (middle > bwMean &&  position == RIGHT ) return LEFT;
-    
-
-  if(middle <= left && middle <= right){
+  if(middle <= left && middle <= right && middle < bwMean){
     position = STRAIGHT;
     return STRAIGHT;
   }
+
+  if (position == LEFT ) return RIGHT;
+  if (position == RIGHT ) return LEFT;
 }
 
 
