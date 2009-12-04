@@ -31,10 +31,10 @@ int navigation::getBearing(){
   int left = val[2];
   
 
-  Serial.print("mean: "); Serial.println(bwMean);
-  //Serial.print("sol: "); Serial.println(left);
-  //Serial.print("orta: "); Serial.println(middle);
-  //Serial.print("sag: "); Serial.println(right);
+  Serial.print("bwMean: "); Serial.println(bwMean); Serial.print("\t");
+  Serial.print("Left: ");Serial.print(left); Serial.print("\t");
+  Serial.print("Middle: ");Serial.print(middle); Serial.print("\t");
+  Serial.print("Right: ");Serial.print(right); Serial.print("\n");
 
   if(left <= middle && left <= right && position != RIGHT){
     position = LEFT;
