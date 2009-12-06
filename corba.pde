@@ -33,8 +33,6 @@ void setup(){
 void loop(){
 
   navigation.steer();
-
-  engine.forward(255,10);
-  delay(50);
+  delay(70);
   //delay(1000);
 }

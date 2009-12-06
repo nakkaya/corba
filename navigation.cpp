@@ -19,6 +19,8 @@ void navigation::steer(){
 
   if(bearing == RIGHT)
     engin.right();
+
+  engin.forward(255,10);
 }
 
 
@@ -31,10 +33,10 @@ int navigation::getBearing(){
   int left = val[2];
   
 
-  Serial.print("bwMean: "); Serial.println(bwMean); Serial.print("\t");
-  Serial.print("Left: ");Serial.print(left); Serial.print("\t");
-  Serial.print("Middle: ");Serial.print(middle); Serial.print("\t");
-  Serial.print("Right: ");Serial.print(right); Serial.print("\n");
+  //Serial.print("bwMean: "); Serial.print(bwMean); Serial.print("\t");
+  //Serial.print("Left: ");Serial.print(left); Serial.print("\t");
+  //Serial.print("Middle: ");Serial.print(middle); Serial.print("\t");
+  //Serial.print("Right: ");Serial.print(right); Serial.print("\n");
 
   if(left <= middle && left <= right && position != RIGHT){
     position = LEFT;
