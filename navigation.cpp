@@ -1,7 +1,7 @@
 #include "WProgram.h"
 #include "navigation.h"
 
-navigation::navigation(engine e){
+navigation::navigation(engine *e){
   position = STRAIGHT;
 
   engin = e;
@@ -11,16 +11,18 @@ navigation::navigation(engine e){
 void navigation::steer(){
   int bearing = getBearing();
 
+  Serial.println(bearing);
+
   if(bearing == LEFT)
-    engin.left();
+    engin->left();
 
   if(bearing == STRAIGHT)
-    engin.straight();
+    engin->straight();
 
   if(bearing == RIGHT)
-    engin.right();
+    engin->right();
 
-  engin.forward(255,10);
+  //engin->forward(255,10);
 }
 
 
@@ -33,10 +35,10 @@ int navigation::getBearing(){
   int left = val[2];
   
 
-  //Serial.print("bwMean: "); Serial.print(bwMean); Serial.print("\t");
-  //Serial.print("Left: ");Serial.print(left); Serial.print("\t");
-  //Serial.print("Middle: ");Serial.print(middle); Serial.print("\t");
-  //Serial.print("Right: ");Serial.print(right); Serial.print("\n");
+  // Serial.print("bwMean: "); Serial.print(bwMean); Serial.print("\t");
+  // Serial.print("Left: ");Serial.print(left); Serial.print("\t");
+  // Serial.print("Middle: ");Serial.print(middle); Serial.print("\t");
+  // Serial.print("Right: ");Serial.print(right); Serial.print("\n");
 
   if(left <= middle && left <= right && position != RIGHT){
     position = LEFT;
@@ -48,7 +50,7 @@ int navigation::getBearing(){
     return LEFT;
   }
 
-  if(middle <= left && middle <= right && middle < bwMean){
+  if(middle <= left && middle <= right){
     position = STRAIGHT;
     return STRAIGHT;
   }

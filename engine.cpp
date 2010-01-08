@@ -1,12 +1,12 @@
 #include "WProgram.h"
 #include "engine.h"
 
-engine::engine(){
+engine::engine(Servo *s){
   // motor pins must be outputs
-  pinMode(PwmPinMotorA, OUTPUT);
   pinMode(PwmPinMotorB, OUTPUT);
-  pinMode(DirectionPinMotorA, OUTPUT);
   pinMode(DirectionPinMotorB, OUTPUT);
+
+  servo = s;
 }
 
 void engine::forward(int speed, int time){
@@ -30,17 +30,14 @@ void engine::reverse(int speed, int time){
 }
 
 void engine::right(){
-  analogWrite(PwmPinMotorA, 255);
-  digitalWrite(DirectionPinMotorA, LOW);
+  servo->write(160);
 }
 
 void engine::left(){
-  analogWrite(PwmPinMotorA, 255);
-  digitalWrite(DirectionPinMotorA, HIGH);
+  servo->write(100);
 }
 
 void engine::straight(){
-  analogWrite(PwmPinMotorA, 0);
-  digitalWrite(DirectionPinMotorA, HIGH);
+  servo->write(130);
 }
 

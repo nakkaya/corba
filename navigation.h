@@ -16,13 +16,13 @@
 class navigation{
 
 public:
-  navigation(engine e);
+  navigation(engine *e);
 
   void steer();
 
   void calibrate();
 private:
-  engine engin;
+  engine *engin;
   PololuQTRSensorsRC qtr;
 
   int position;

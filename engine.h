@@ -6,10 +6,12 @@
 #define DirectionPinMotorA 12
 #define DirectionPinMotorB 13
 
+#include <Servo.h> 
+
 class engine{
 
 public:
-  engine();
+  engine(Servo *s);
 
   void straight();
   void left();
@@ -17,6 +19,7 @@ public:
   void reverse(int speed, int time);
   void forward(int speed, int time);
 private:
+  Servo *servo;
 };
 
 #endif
