@@ -22,7 +22,7 @@ void navigation::steer(){
   if(bearing == RIGHT)
     engin->right();
 
-  //engin->forward(255,10);
+  engin->forward(255,10);
 }
 
 
