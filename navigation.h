@@ -14,19 +14,13 @@
 #include "engine.h"
 
 class navigation{
-
 public:
   navigation(engine *e);
-
   void steer();
-
 private:
   engine *engin;
   PololuQTRSensorsRC qtr;
-
   int position;
-  int bwMean;
-
   int getBearing();
 };
 
