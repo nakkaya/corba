@@ -11,8 +11,6 @@ navigation::navigation(engine *e){
 void navigation::steer(){
   int bearing = getBearing();
 
-  Serial.println(bearing);
-
   if(bearing == LEFT)
     engin->left();
 
