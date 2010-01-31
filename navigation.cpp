@@ -33,10 +33,12 @@ int navigation::getBearing(){
   int right = val[0];
   int middle = val[1];
   int left = val[2];
-  
-  // Serial.print("Left: ");Serial.print(left); Serial.print("\t");
-  // Serial.print("Middle: ");Serial.print(middle); Serial.print("\t");
-  // Serial.print("Right: ");Serial.print(right); Serial.print("\n");
+
+#ifdef DEBUG
+  Serial.print("Left: ");Serial.print(left); Serial.print("\t");
+  Serial.print("Middle: ");Serial.print(middle); Serial.print("\t");
+  Serial.print("Right: ");Serial.print(right); Serial.print("\n");
+#endif
 
   if(left <= middle && left <= right && position != RIGHT){
     position = LEFT;

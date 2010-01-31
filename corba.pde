@@ -2,6 +2,8 @@
 #include "engine.h"
 #include "navigation.h"
 
+//#define DEBUG
+
 const int buttonPin = 2;
 const int ledPin =  8;
 const int servoPin = 9;
@@ -19,7 +21,9 @@ void waitButton(){
 }
 
 void setup(){
+#ifdef DEBUG
   Serial.begin(9600);
+#endif
 
   pinMode(buttonPin, INPUT); 
   pinMode(ledPin, OUTPUT);
@@ -29,11 +33,9 @@ void setup(){
 
   waitButton();
   delay(2000);
-
 }
 
 void loop(){
   navigation.steer();
   delay(70);
-  //delay(1000);
 }
