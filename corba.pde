@@ -3,6 +3,7 @@
 #include "navigation.h"
 
 //#define DEBUG
+#define FORWARD   //control power to rear wheel
 
 const int buttonPin = 2;
 const int ledPin =  8;
