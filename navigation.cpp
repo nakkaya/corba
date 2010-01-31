@@ -5,7 +5,7 @@ navigation::navigation(engine *e){
   position = STRAIGHT;
 
   engin = e;
-  qtr.init((unsigned char[]) {5 , 6 ,7}, 3);
+  qtr.init((unsigned char[]) {SENSOR_LEFT,SENSOR_MIDDLE,SENSOR_RIGHT}, 3);
 }
 
 void navigation::steer(){
