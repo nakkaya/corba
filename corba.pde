@@ -4,6 +4,7 @@
 
 const int buttonPin = 2;
 const int ledPin =  8;
+const int servoPin = 9;
 
 Servo servo;
 engine engine(&servo);
@@ -22,7 +23,7 @@ void setup(){
 
   pinMode(buttonPin, INPUT); 
   pinMode(ledPin, OUTPUT);
-  servo.attach(9);
+  servo.attach(servoPin);
 
   //waitButton();
   //navigation.calibrate();
