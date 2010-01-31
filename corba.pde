@@ -25,9 +25,6 @@ void setup(){
   pinMode(ledPin, OUTPUT);
   servo.attach(servoPin);
 
-  //waitButton();
-  //navigation.calibrate();
-
   engine.straight();
 
   waitButton();

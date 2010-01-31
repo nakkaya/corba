@@ -20,7 +20,6 @@ public:
 
   void steer();
 
-  void calibrate();
 private:
   engine *engin;
   PololuQTRSensorsRC qtr;
