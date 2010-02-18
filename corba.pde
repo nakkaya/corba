@@ -7,9 +7,9 @@
 
 const int buttonPin = 12;
 const int ledPin =  13;
-//const int servoPin = 9;
+const int servoPin = 11;
 
-//Servo servo;
+Servo servo;
 //engine engine(&servo);
 //navigation navigation(&engine);
 
@@ -28,7 +28,7 @@ void setup(){
 
   pinMode(buttonPin, INPUT); 
   pinMode(ledPin, OUTPUT);
-  //servo.attach(servoPin);
+  servo.attach(servoPin);
 
   //engine.straight();
 
