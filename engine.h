@@ -12,6 +12,7 @@ public:
   void straight();
   void left();
   void right();
+  void turnRaw(int angle);
 
   void forward(int speed);
 private:

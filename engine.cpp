@@ -7,7 +7,7 @@ engine::engine(Servo *s,Servo *e){
 }
 
 void engine::init(){
-  left();
+  straight();
   forward(90);
 }
 
@@ -16,14 +16,17 @@ void engine::forward(int speed){
 }
 
 void engine::right(){
-  servo->write(160);
-}
-
-void engine::left(){
-  servo->write(100);
-}
-
-void engine::straight(){
   servo->write(130);
 }
 
+void engine::left(){
+  servo->write(70);
+}
+
+void engine::straight(){
+  servo->write(100);
+}
+
+void engine::turnRaw(int angle){
+  servo->write(angle);
+}

@@ -2,59 +2,30 @@
 #include "navigation.h"
 
 navigation::navigation(engine *e){
-  position = STRAIGHT;
-
   engin = e;
-  qtr.init((unsigned char[]) {SENSOR_LEFT,SENSOR_MIDDLE,SENSOR_RIGHT}, 3);
+  qtr.init((unsigned char[]) {2,3,4,5,6,7,8,9}, 8);
 }
 
 void navigation::steer(){
-  int bearing = getBearing();
-
-  if(bearing == LEFT)
-    engin->left();
-
-  if(bearing == STRAIGHT)
-    engin->straight();
-
-  if(bearing == RIGHT)
-    engin->right();
-
-#ifdef FORWARD
-  engin->forward(255,10);
-#endif
-}
-
-
-int navigation::getBearing(){
-  unsigned int val[3];
+  unsigned int val[8];
   qtr.read(val);
-
-  int right = val[0];
-  int middle = val[1];
-  int left = val[2];
+  int line = qtr.readLine(val,QTR_EMITTERS_ON,1);
 
 #ifdef DEBUG
-  Serial.print("Left: ");Serial.print(left); Serial.print("\t");
-  Serial.print("Middle: ");Serial.print(middle); Serial.print("\t");
-  Serial.print("Right: ");Serial.print(right); Serial.print("\n");
+  Serial.print(line);
+  Serial.print(" Right< ");
+  Serial.print(val[0]); Serial.print(" "); 
+  Serial.print(val[1]); Serial.print(" ");
+  Serial.print(val[2]); Serial.print(" "); 
+  Serial.print(val[3]); Serial.print(" ");
+  Serial.print(val[4]); Serial.print(" "); 
+  Serial.print(val[5]); Serial.print(" ");
+  Serial.print(val[6]); Serial.print(" "); 
+  Serial.print(val[7]); Serial.print(" ");
+  Serial.println(" >Left");
 #endif
 
-  if(left <= middle && left <= right && position != RIGHT){
-    position = LEFT;
-    return RIGHT;
-  }
-
-  if(right <= left && right <= middle && position != LEFT){
-    position = RIGHT;
-    return LEFT;
-  }
-
-  if(middle <= left && middle <= right){
-    position = STRAIGHT;
-    return STRAIGHT;
-  }
-
-  if (position == LEFT ) return RIGHT;
-  if (position == RIGHT ) return LEFT;
+  int angle = map(line,0,7000,70,130);
+  angle = map(angle,70,130,130,70);
+  engin->turnRaw(angle);
 }

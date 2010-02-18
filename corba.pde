@@ -1,9 +1,7 @@
 #include <Servo.h>
 #include "engine.h"
 #include "navigation.h"
-
-#define DEBUG
-#define FORWARD   //control power to rear wheel
+#include "config.h"
 
 const int buttonPin = 12;
 const int ledPin =  13;
@@ -13,7 +11,7 @@ const int escPin = 10;
 Servo servo;
 Servo esc;
 engine engine(&servo,&esc);
-//navigation navigation(&engine);
+navigation navigation(&engine);
 
 void waitButton(){
   digitalWrite(ledPin, HIGH);
@@ -39,10 +37,17 @@ void setup(){
   waitButton();
   delay(2000);
 
-  //engine.forward(101);
+#ifdef FORWARD
+  engine.forward(101);
+#endif
 }
 
 void loop(){
-  //navigation.steer();
-  //delay(70);
+
+  navigation.steer();
+  delay(70);
+
+#ifdef DELAY_LOOP
+    delay(1000);
+#endif
 }
