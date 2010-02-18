@@ -6,7 +6,7 @@
 #define FORWARD   //control power to rear wheel
 
 //const int buttonPin = 2;
-//const int ledPin =  8;
+const int ledPin =  13;
 //const int servoPin = 9;
 
 //Servo servo;
@@ -27,7 +27,7 @@ void setup(){
 #endif
 
   //pinMode(buttonPin, INPUT); 
-  //pinMode(ledPin, OUTPUT);
+  pinMode(ledPin, OUTPUT);
   //servo.attach(servoPin);
 
   //engine.straight();
@@ -37,6 +37,7 @@ void setup(){
 }
 
 void loop(){
+
   //navigation.steer();
   //delay(70);
 }
