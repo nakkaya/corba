@@ -34,11 +34,11 @@ void setup(){
 
   engine.init();
 
+#ifdef FORWARD
   waitButton();
   delay(2000);
 
-#ifdef FORWARD
-  engine.forward(99);
+  engine.forward(102);
 #endif
 }
 
