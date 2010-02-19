@@ -38,7 +38,7 @@ void setup(){
   delay(2000);
 
 #ifdef FORWARD
-  engine.forward(101);
+  engine.forward(99);
 #endif
 }
 
