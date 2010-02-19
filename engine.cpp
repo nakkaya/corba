@@ -28,10 +28,5 @@ void engine::straight(){
 }
 
 void engine::turnRaw(int angle){
-#ifdef DEBUG
-  Serial.print("Angle ");
-  Serial.println(angle);
-#endif
-
   servo->write(angle);
 }
