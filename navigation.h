@@ -13,6 +13,7 @@ public:
 private:
   engine *engin;
   PololuQTRSensorsRC qtr;
+  int lineLost;
 };
 
 #endif

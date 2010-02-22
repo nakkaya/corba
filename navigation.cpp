@@ -4,6 +4,7 @@
 navigation::navigation(engine *e){
   engin = e;
   qtr.init((unsigned char[]) {2,3,4,5,6,7,8,9}, 8);
+  lineLost = 0;
 }
 
 void navigation::steer(){
@@ -25,7 +26,22 @@ void navigation::steer(){
   Serial.println(" >Left");
 #endif
 
-  int angle = map(line,0,7000,70,130);
-  angle = map(angle,70,130,130,70);
-  engin->turnRaw(angle);
+  if (line == 7000 )
+    lineLost = 1;
+  else if (line == 0)
+    lineLost = 2;
+
+#ifdef DEBUG
+  Serial.print(" Line Lost: ");
+  Serial.println(lineLost);
+#endif      
+
+  if (lineLost == 0 ||
+      (lineLost == 1 && line <= 3500  && line >= 7000) ||
+      (lineLost == 2 && line <= 3500 && line >= 0) ){
+    lineLost = 0;
+    int angle = map(line,0,7000,70,130);
+    angle = map(angle,70,130,130,70);
+    engin->turnRaw(angle);
+  }
 }
