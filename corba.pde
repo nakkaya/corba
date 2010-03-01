@@ -15,9 +15,20 @@ navigation navigation(&engine);
 
 void waitButton(){
   digitalWrite(ledPin, HIGH);
-  while(true)
+
+  while(true){
+
+#ifdef DEBUG
+    if (digitalRead(buttonPin) == LOW)
+      Serial.println("Pin Low.");
+    else
+      Serial.println("Pin High.");
+#endif
+
     if (digitalRead(buttonPin) == LOW)
       break;
+  }
+
   digitalWrite(ledPin, LOW);
 }
 
