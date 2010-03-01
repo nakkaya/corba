@@ -16,15 +16,15 @@ void engine::forward(int speed){
 }
 
 void engine::right(){
-  servo->write(40);
+  servo->write(FRONT_SERVO_RIGHT);
 }
 
 void engine::left(){
-  servo->write(130);
+  servo->write(FRONT_SERVO_LEFT);
 }
 
 void engine::straight(){
-  servo->write(90);
+  servo->write(FRONT_SERVO_CENTER);
 }
 
 void engine::turnRaw(int angle){
