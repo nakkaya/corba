@@ -6,6 +6,9 @@
 #include "engine.h"
 #include "config.h"
 
+#define LINE_RIGHT 1
+#define LINE_LEFT 2
+
 class navigation{
 public:
   navigation(engine *e);
