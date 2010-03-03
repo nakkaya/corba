@@ -10,6 +10,10 @@
 #define READ_LINE_RIGHT 1000
 #define READ_LINE_CENTER (READ_LINE_LEFT+READ_LINE_RIGHT)/2
 
+#define LINE_TRACKING 0
+#define LINE_LEFT 1
+#define LINE_RIGHT 2
+
 class navigation{
 public:
   navigation(engine *e);

@@ -19,18 +19,24 @@ void navigation::steer(){
   //int line = qtr.readLine(val,QTR_EMITTERS_ON,1);
   int line = qtr.readLine(val);
 
+  if (line < READ_LINE_RIGHT)
+    lineLost = LINE_LEFT;
+  else if (line > READ_LINE_LEFT)
+    lineLost = LINE_RIGHT;
+
 #ifdef DEBUG
-  Serial.print(line);
-  Serial.print(" R< ");
-  Serial.print(val[0]); Serial.print(" "); 
-  Serial.print(val[1]); Serial.print(" ");
-  Serial.print(val[2]); Serial.print(" "); 
-  Serial.print(val[3]); Serial.print(" ");
-  Serial.print(val[4]); Serial.print(" "); 
-  Serial.print(val[5]); Serial.print(" ");
-  Serial.print(val[6]); Serial.print(" "); 
-  //Serial.print(val[7]); Serial.print(" ");
-  Serial.println(" >L ");
+    Serial.print(line);
+    Serial.print(" R< ");
+    Serial.print(val[0]); Serial.print(" ");
+    Serial.print(val[1]); Serial.print(" ");
+    Serial.print(val[2]); Serial.print(" ");
+    Serial.print(val[3]); Serial.print(" ");
+    Serial.print(val[4]); Serial.print(" ");
+    Serial.print(val[5]); Serial.print(" ");
+    Serial.print(val[6]); Serial.print(" ");
+    //Serial.print(val[7]); Serial.print(" ");
+    Serial.print(" >L "); 
+    Serial.print(" LL: "); Serial.println(lineLost);
 #endif
 
   turn(line);
