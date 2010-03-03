@@ -7,5 +7,6 @@
 #define LED_PIN 13
 
 void waitButton();
+void blink();
 
 #endif
