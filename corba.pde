@@ -24,6 +24,7 @@ void setup(){
   esc.attach(escPin);
 
   engine.init();
+  navigation.calibrate();
 
 #ifdef FORWARD
   waitButton();
