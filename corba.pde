@@ -2,9 +2,8 @@
 #include "engine.h"
 #include "navigation.h"
 #include "config.h"
+#include "util.h"
 
-const int buttonPin = 12;
-const int ledPin =  13;
 const int servoPin = 11;
 const int escPin = 10;
 
@@ -13,32 +12,13 @@ Servo esc;
 engine engine(&servo,&esc);
 navigation navigation(&engine);
 
-void waitButton(){
-  digitalWrite(ledPin, HIGH);
-
-  while(true){
-
-#ifdef DEBUG
-    if (digitalRead(buttonPin) == LOW)
-      Serial.println("Pin Low.");
-    else
-      Serial.println("Pin High.");
-#endif
-
-    if (digitalRead(buttonPin) == LOW)
-      break;
-  }
-
-  digitalWrite(ledPin, LOW);
-}
-
 void setup(){
 #ifdef DEBUG
   Serial.begin(9600);
 #endif
 
-  pinMode(buttonPin, INPUT); 
-  pinMode(ledPin, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT); 
+  pinMode(LED_PIN, OUTPUT);
 
   servo.attach(servoPin);
   esc.attach(escPin);
