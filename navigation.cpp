@@ -7,6 +7,16 @@ navigation::navigation(engine *e){
   lineLost = 0;
 }
 
+void navigation::calibrate(){
+  waitButton();
+  int i;  
+  for (i = 0; i < 250; i++){  // make the calibration take about 5 seconds  
+    qtr.calibrate(QTR_EMITTERS_ON);
+    delay(20);  
+  } 
+  blink();
+}
+
 void navigation::turn(int line){
   int angle = map
     (line,READ_LINE_RIGHT,READ_LINE_LEFT,FRONT_SERVO_RIGHT,FRONT_SERVO_LEFT);
