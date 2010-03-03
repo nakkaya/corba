@@ -29,11 +29,6 @@ void navigation::steer(){
   //int line = qtr.readLine(val,QTR_EMITTERS_ON,1);
   int line = qtr.readLine(val);
 
-  if (line < READ_LINE_RIGHT)
-    lineLost = LINE_LEFT;
-  else if (line > READ_LINE_LEFT)
-    lineLost = LINE_RIGHT;
-
 #ifdef DEBUG
     Serial.print(line);
     Serial.print(" R< ");
