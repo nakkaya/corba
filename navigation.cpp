@@ -40,8 +40,7 @@ void navigation::steer(){
     Serial.print(val[5]); Serial.print(" ");
     Serial.print(val[6]); Serial.print(" ");
     //Serial.print(val[7]); Serial.print(" ");
-    Serial.print(" >L "); 
-    Serial.print(" LL: "); Serial.println(lineLost);
+    Serial.println(" >L "); 
 #endif
 
   turn(line);
