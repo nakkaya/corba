@@ -7,9 +7,8 @@
 #include "config.h"
 #include "util.h"
 
-#define READ_LINE_LEFT 5000
-#define READ_LINE_RIGHT 1000
-#define READ_LINE_CENTER (READ_LINE_LEFT+READ_LINE_RIGHT)/2
+#define READ_LINE_LEFT 7000
+#define READ_LINE_RIGHT 0
 
 class navigation{
 public:

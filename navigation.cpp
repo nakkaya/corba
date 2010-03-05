@@ -3,7 +3,7 @@
 
 navigation::navigation(engine *e){
   engin = e;
-  qtr.init((unsigned char[]) {2,3,4,5,6,7,9}, 7);
+  qtr.init((unsigned char[]) {2,3,4,5,6,7,8,9}, 8);
   lineLost = 0;
 }
 
@@ -24,7 +24,7 @@ void navigation::turn(int line){
 }
 
 void navigation::steer(){
-  unsigned int val[7];
+  unsigned int val[8];
   qtr.read(val);
   //int line = qtr.readLine(val,QTR_EMITTERS_ON,1);
   int line = qtr.readLine(val);
