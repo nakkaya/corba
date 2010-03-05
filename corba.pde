@@ -30,7 +30,7 @@ void setup(){
   waitButton();
   delay(2000);
 
-  engine.forward(100);
+  engine.forward(99);
 #endif
 }
 
