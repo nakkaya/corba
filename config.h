@@ -1,3 +1,3 @@
-//#define DEBUG
+#define DEBUG
 //#define DELAY_LOOP
-#define FORWARD   //control power to rear wheel
+//#define FORWARD   //control power to rear wheel
