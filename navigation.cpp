@@ -21,6 +21,10 @@ void navigation::turn(int line){
   int angle = map
     (line,READ_LINE_RIGHT,READ_LINE_LEFT,FRONT_SERVO_RIGHT,FRONT_SERVO_LEFT);
   engin->turnRaw(angle);
+#ifdef DEBUG
+  Serial.print(" A: ");
+  Serial.println(angle);
+#endif
 }
 
 void navigation::steer(){
@@ -39,8 +43,8 @@ void navigation::steer(){
     Serial.print(val[4]); Serial.print(" ");
     Serial.print(val[5]); Serial.print(" ");
     Serial.print(val[6]); Serial.print(" ");
-    //Serial.print(val[7]); Serial.print(" ");
-    Serial.println(" >L "); 
+    Serial.print(val[7]); Serial.print(" ");
+    Serial.print(" >L "); 
 #endif
 
   turn(line);
