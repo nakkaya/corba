@@ -30,14 +30,13 @@ void setup(){
   waitButton();
   delay(2000);
 
-  engine.forward(99);
+  engine.forward(101);
 #endif
 }
 
 void loop(){
 
   navigation.steer();
-  delay(70);
 
 #ifdef DELAY_LOOP
     delay(1000);
