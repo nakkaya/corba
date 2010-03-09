@@ -4,9 +4,9 @@
 #include <Servo.h> 
 #include "config.h"
 
-#define FRONT_SERVO_RIGHT 40
+#define FRONT_SERVO_RIGHT 120
 #define FRONT_SERVO_CENTER 90
-#define FRONT_SERVO_LEFT 130
+#define FRONT_SERVO_LEFT 60
 
 class engine{
 
