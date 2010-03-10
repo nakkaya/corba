@@ -9,6 +9,7 @@
 
 #define READ_LINE_LEFT 7000
 #define READ_LINE_RIGHT 0
+#define TRACKING_WHITE 1
 
 class navigation{
 public:
@@ -17,10 +18,10 @@ public:
   void steer();
 private:
   void turn(int line);
+  bool lineLost(unsigned int *vals);
 
   engine *engin;
   PololuQTRSensorsRC qtr;
-  int lineLost;
 };
 
 #endif

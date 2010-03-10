@@ -4,7 +4,6 @@
 navigation::navigation(engine *e){
   engin = e;
   qtr.init((unsigned char[]) {2,3,4,5,6,7,8,9}, 8);
-  lineLost = 0;
 }
 
 void navigation::calibrate(){
@@ -27,11 +26,30 @@ void navigation::turn(int line){
 #endif
 }
 
+bool navigation::lineLost(unsigned int* vals){
+  bool lost = true;
+  
+  if (TRACKING_WHITE == 0 ){
+    for(int i=0;i<8;i++){
+      if (vals[i] > 150){
+	lost =false;
+      }
+    }
+  }else{
+    for(int i=0;i<8;i++){      
+      if (vals[i] < 150){
+	lost =false;
+      }
+    }
+  }
+
+  return lost;
+}
+
 void navigation::steer(){
   unsigned int val[8];
   qtr.read(val);
-  //int line = qtr.readLine(val,QTR_EMITTERS_ON,1);
-  int line = qtr.readLine(val);
+  int line = qtr.readLine(val,QTR_EMITTERS_ON,TRACKING_WHITE);
 
 #ifdef DEBUG
     Serial.print(line);
@@ -46,6 +64,7 @@ void navigation::steer(){
     Serial.print(val[7]); Serial.print(" ");
     Serial.print(" >L "); 
 #endif
-
-  turn(line);
+    
+    if (lineLost(val) == false)
+      turn(line);
 }
