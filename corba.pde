@@ -29,8 +29,6 @@ void setup(){
 #ifdef FORWARD
   waitButton();
   delay(2000);
-
-  engine.forward(102);
 #endif
 }
 
