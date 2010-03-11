@@ -8,6 +8,10 @@
 #define FRONT_SERVO_CENTER 90
 #define FRONT_SERVO_LEFT 60
 
+#define GEAR_ONE 99
+#define GEAR_TWO 98
+#define GEAR_THREE 97
+
 class engine{
 
 public:
