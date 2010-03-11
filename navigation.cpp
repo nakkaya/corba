@@ -17,9 +17,30 @@ void navigation::calibrate(){
 }
 
 void navigation::turn(int line){
+  // int angle = map
+  //   (line,READ_LINE_RIGHT,READ_LINE_LEFT,FRONT_SERVO_RIGHT,FRONT_SERVO_LEFT);
+
   int angle = map
-    (line,READ_LINE_RIGHT,READ_LINE_LEFT,FRONT_SERVO_RIGHT,FRONT_SERVO_LEFT);
+    (line,READ_LINE_RIGHT,READ_LINE_LEFT,0,30);
+
+  if (angle >= 12 && angle <= 18 ){
+      angle = map
+  	(line,READ_LINE_RIGHT,READ_LINE_LEFT,FRONT_SERVO_RIGHT,FRONT_SERVO_LEFT);
+  }else{
+    //squash val
+    angle = map
+      (angle,0,30,FRONT_SERVO_RIGHT,FRONT_SERVO_LEFT);
+  }
+
+  if (angle > 87 && angle < 93)
+    engin->forward(GEAR_ONE);
+  else if (angle > 70 && angle < 100)
+    engin->forward(GEAR_TWO);
+  else
+    engin->forward(GEAR_THREE);
+
   engin->turnRaw(angle);
+
 #ifdef DEBUG
   Serial.print(" A: ");
   Serial.println(angle);
@@ -29,9 +50,9 @@ void navigation::turn(int line){
 bool navigation::lineLost(unsigned int* vals){
   bool lost = true;
   
-  if (TRACKING_WHITE == 0 ){
+  if (TRACKING_WHITE == 0){
     for(int i=0;i<8;i++){
-      if (vals[i] > 150){
+      if (vals[i] > 300){
 	lost =false;
       }
     }
@@ -64,7 +85,9 @@ void navigation::steer(){
     Serial.print(val[7]); Serial.print(" ");
     Serial.print(" >L "); 
 #endif
-    
+
     if (lineLost(val) == false)
       turn(line);
+    else
+      engin->forward(GEAR_THREE);
 }
