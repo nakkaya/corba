@@ -3,7 +3,7 @@
 
 navigation::navigation(engine *e){
   engin = e;
-  qtr.init((unsigned char[]) {2,3,4,5,6,7,8,9}, 8);
+  qtr.init((unsigned char[]) {2,3,4,5,6,7,9}, 7);
 }
 
 void navigation::calibrate(){
@@ -57,8 +57,8 @@ bool navigation::lineLost(unsigned int* vals){
       }
     }
   }else{
-    for(int i=0;i<8;i++){      
-      if (vals[i] < 150){
+    for(int i=0;i<7;i++){      
+      if (vals[i] < 300){
 	lost =false;
       }
     }
@@ -68,7 +68,7 @@ bool navigation::lineLost(unsigned int* vals){
 }
 
 void navigation::steer(){
-  unsigned int val[8];
+  unsigned int val[7];
   qtr.read(val);
   int line = qtr.readLine(val,QTR_EMITTERS_ON,TRACKING_WHITE);
 
@@ -82,7 +82,6 @@ void navigation::steer(){
     Serial.print(val[4]); Serial.print(" ");
     Serial.print(val[5]); Serial.print(" ");
     Serial.print(val[6]); Serial.print(" ");
-    Serial.print(val[7]); Serial.print(" ");
     Serial.print(" >L "); 
 #endif
 

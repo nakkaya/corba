@@ -9,7 +9,7 @@
 
 #define READ_LINE_LEFT 7000
 #define READ_LINE_RIGHT 0
-#define TRACKING_WHITE 0
+#define TRACKING_WHITE 1
 
 class navigation{
 public:
