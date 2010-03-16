@@ -69,7 +69,7 @@ bool navigation::lineLost(unsigned int* vals){
 
 void navigation::steer(){
   unsigned int val[7];
-  qtr.read(val);
+  qtr.readCalibrated(val);
   int line = qtr.readLine(val,QTR_EMITTERS_ON,TRACKING_WHITE);
 
 #ifdef DEBUG
