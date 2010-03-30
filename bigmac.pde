@@ -30,20 +30,12 @@ void loop(){
 
   int pos = readLine(&qtr);
 
-  int leftMotorSpeed = 200;
-  int rightMotorSpeed = 200;
-
   int error = pos - 2500;
   int motorSpeed = KP * error + KD * (error - lastError);
   lastError = error;
 
-  int m1Speed = M1 + motorSpeed;  
-  int m2Speed = M2 - motorSpeed; 
-
-  if (m1Speed < 0)
-    m1Speed = 0;
-  if (m2Speed < 0)
-    m2Speed = 0;
+  int m1Speed = M1 + motorSpeed;
+  int m2Speed = M2 - motorSpeed;
 
   m1Speed = map(m1Speed,5,505,0,255);
   m2Speed = map(m2Speed,5,505,0,255);
