@@ -28,9 +28,9 @@ void loop(){
   int m2Speed = 255;
 
   if (error < 0)
-    m1Speed = map(error,-2500,0,0,255);
+    m1Speed = map(error,-2500,0,-255,255);
   else
-    m2Speed = map(error,0,2500,255,0);
+    m2Speed = map(error,0,2500,255,-255);
 
 
 #ifdef DEBUG
@@ -38,16 +38,8 @@ void loop(){
 #endif
 
 #ifdef POWER
-  if (pos == 0 ){
-    motor(MotorA,-255);
-    motor(MotorB,m2Speed);
-  }else if ( pos == 5000){
-    motor(MotorA,m1Speed);
-    motor(MotorB,-255);
-  }else {
     motor(MotorA,m1Speed);
     motor(MotorB,m2Speed);
-  }
 #endif
 
 }
