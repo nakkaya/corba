@@ -23,7 +23,7 @@ void engineSetup(){
   pinMode(DirectionPinMotorB, OUTPUT);
 }
 
-void motor(int motor,int speed,int direction){
+void motor(int motor,int speed){
   int pwmPin = 10;
   int dirPin = 12;
   int dir = HIGH;
@@ -33,8 +33,10 @@ void motor(int motor,int speed,int direction){
     dirPin = 13;
   }
 
-  if(direction == REVERSE)
+  if(speed < 0){
     dir = LOW;
+    speed = -1 * speed;
+  }
 
   analogWrite(pwmPin, speed);
   digitalWrite(dirPin, dir);

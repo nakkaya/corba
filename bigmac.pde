@@ -49,14 +49,14 @@ void loop(){
 
 #ifdef POWER
   if (pos == 0 ){
-    motor(MotorA,255,REVERSE);
-    motor(MotorB,m2Speed,FORWARD);
+    motor(MotorA,-255);
+    motor(MotorB,m2Speed);
   }else if ( pos == 5000){
-    motor(MotorA,m1Speed,FORWARD);
-    motor(MotorB,255,REVERSE);
+    motor(MotorA,m1Speed);
+    motor(MotorB,-255);
   }else {
-    motor(MotorA,m1Speed,FORWARD);
-    motor(MotorB,m2Speed,FORWARD);
+    motor(MotorA,m1Speed);
+    motor(MotorB,m2Speed);
   }
 #endif
 

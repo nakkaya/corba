@@ -10,10 +10,10 @@
 
 void calibrate(PololuQTRSensorsRC* qtr){
 #ifdef POWER
-  motor(MotorA,150,FORWARD);
-  motor(MotorB,150,REVERSE);
+  motor(MotorA,150);
+  motor(MotorB,-150);
 #endif
-  
+
   int i;
   for (i = 0; i < 125; i++){
     qtr->calibrate(QTR_EMITTERS_ON);
@@ -21,8 +21,8 @@ void calibrate(PololuQTRSensorsRC* qtr){
   }
 
 #ifdef POWER
-  motor(MotorA,0,FORWARD);
-  motor(MotorB,0,REVERSE);
+  motor(MotorA,0);
+  motor(MotorB,0);
 #endif
 }
 
