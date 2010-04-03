@@ -6,7 +6,6 @@
 #include "engine.h"
 #include "PololuQTRSensors.h"
 
-#define TRACKING_WHITE 0
 
 void calibrate(PololuQTRSensorsRC* qtr){
 #ifdef POWER
@@ -26,8 +25,27 @@ void calibrate(PololuQTRSensorsRC* qtr){
 #endif
 }
 
+bool lineLost(unsigned int* vals){
+  bool lost = true;
+  
+  if (TRACKING_WHITE == 0){
+    for(int i=0;i<NUM_OF_SENSORS - 1;i++){
+      if (vals[i] > WHITE_TRASHOLD){
+	lost =false;
+      }
+    }
+  }else{
+    for(int i=0;i<NUM_OF_SENSORS - 1;i++){
+      if (vals[i] < BLACK_TRASHOLD){
+	lost =false;
+      }
+    }
+  }
+  return lost;
+}
+
 int readLine(PololuQTRSensorsRC* qtr){
-  unsigned int val[6];
+  unsigned int val[NUM_OF_SENSORS];
   qtr->readCalibrated(val);
   int line = qtr->readLine(val,QTR_EMITTERS_ON,TRACKING_WHITE);
 
@@ -40,8 +58,11 @@ int readLine(PololuQTRSensorsRC* qtr){
   Serial.print(val[3]); Serial.print(" ");
   Serial.print(val[4]); Serial.print(" ");
   Serial.print(val[5]); Serial.print(" ");
-  Serial.print(" >L ");
+  Serial.print(" >L");
 #endif
+
+  if (lineLost(val) == true)
+    return -1;
 
   return line;
 }
