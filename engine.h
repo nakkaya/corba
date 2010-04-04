@@ -24,6 +24,7 @@ void engineSetup(){
 }
 
 void motor(int motor,int speed){
+#ifdef POWER
   int pwmPin = 10;
   int dirPin = 12;
   int dir = HIGH;
@@ -40,5 +41,6 @@ void motor(int motor,int speed){
 
   analogWrite(pwmPin, speed);
   digitalWrite(dirPin, dir);
+#endif
 }
 #endif

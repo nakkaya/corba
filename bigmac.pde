@@ -38,9 +38,7 @@ void loop(){
     Serial.print(m1Speed); Serial.print(" "); Serial.println(m2Speed);
 #endif
 
-#ifdef POWER
     motor(MotorA,m1Speed);
     motor(MotorB,m2Speed);
-#endif
   }
 }

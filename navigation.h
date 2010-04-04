@@ -8,10 +8,8 @@
 
 
 void calibrate(PololuQTRSensorsRC* qtr){
-#ifdef POWER
   motor(MotorA,150);
   motor(MotorB,-150);
-#endif
 
   int i;
   for (i = 0; i < 125; i++){
@@ -19,10 +17,8 @@ void calibrate(PololuQTRSensorsRC* qtr){
     delay(20);
   }
 
-#ifdef POWER
   motor(MotorA,0);
   motor(MotorB,0);
-#endif
 }
 
 bool lineLost(unsigned int* vals){
