@@ -1,7 +1,7 @@
 //#define DEBUG
 #define POWER
 
-#define NUM_OF_SENSORS 6
+#define NUM_OF_SENSORS 8
 #define MIDDLE_POS (((NUM_OF_SENSORS*1000) - 1000) / 2)
 
 #define TRACKING_WHITE 0

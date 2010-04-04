@@ -58,6 +58,8 @@ int readLine(PololuQTRSensorsRC* qtr){
   Serial.print(val[3]); Serial.print(" ");
   Serial.print(val[4]); Serial.print(" ");
   Serial.print(val[5]); Serial.print(" ");
+  Serial.print(val[6]); Serial.print(" ");
+  Serial.print(val[7]); Serial.print(" ");
   Serial.print(" >L");
 #endif
 

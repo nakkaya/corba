@@ -5,7 +5,7 @@
 #include "navigation.h"
 
 Button button = Button(14,PULLDOWN);
-PololuQTRSensorsRC qtr((unsigned char[]) {2,3,4,5,6,7}, NUM_OF_SENSORS);
+PololuQTRSensorsRC qtr((unsigned char[]) {2,3,4,5,6,7,8,9}, NUM_OF_SENSORS);
 
 void setup(){
 #ifdef DEBUG
