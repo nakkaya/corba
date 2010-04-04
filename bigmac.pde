@@ -22,7 +22,7 @@ void setup(){
 void loop(){
   int pos = readLine(&qtr);
 
-  if (pos != -1 ){
+  if (pos != LINE_LOST ){
 
     int error = pos - MIDDLE_POS;
     int m1Speed = 255;

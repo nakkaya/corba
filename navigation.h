@@ -6,6 +6,8 @@
 #include "engine.h"
 #include "PololuQTRSensors.h"
 
+#define LINE_LOST -1
+
 
 void calibrate(PololuQTRSensorsRC* qtr){
   motor(MotorA,150);
@@ -60,7 +62,7 @@ int readLine(PololuQTRSensorsRC* qtr){
 #endif
 
   if (lineLost(val) == true)
-    return -1;
+    return LINE_LOST;
 
   return line;
 }
