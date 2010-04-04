@@ -22,23 +22,36 @@ void setup(){
 void loop(){
   int pos = readLine(&qtr);
 
-  if (pos != LINE_LOST ){
+if (pos != LINE_LOST){
 
-    int error = pos - MIDDLE_POS;
-    int m1Speed = 255;
-    int m2Speed = 255;
+    if (pos == EDGE_RIGHT){
+      motor(MotorA,-150);
+      motor(MotorB,150);
+      
+      delay(200);
+    }else if (pos == EDGE_LEFT){
+      motor(MotorA,150);
+      motor(MotorB,-150);
+      
+      delay(200);
+    }else{
 
-    if (error < 0)
-      m1Speed = map(error,-MIDDLE_POS,0,-255,255);
-    else
-      m2Speed = map(error,0,MIDDLE_POS,255,-255);
+      int error = pos - MIDDLE_POS;
+      int m1Speed = 255;
+      int m2Speed = 255;
+
+      if (error < 0)
+	m1Speed = map(error,-MIDDLE_POS,0,-255,255);
+      else
+	m2Speed = map(error,0,MIDDLE_POS,255,-255);
 
 #ifdef DEBUG
-    Serial.print(error);   Serial.print(" ");
-    Serial.print(m1Speed); Serial.print(" "); Serial.println(m2Speed);
+      Serial.print(error);   Serial.print(" ");
+      Serial.print(m1Speed); Serial.print(" "); Serial.println(m2Speed);
 #endif
 
-    motor(MotorA,m1Speed);
-    motor(MotorB,m2Speed);
+      motor(MotorA,m1Speed);
+      motor(MotorB,m2Speed);
+    }
   }
 }
