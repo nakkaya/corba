@@ -5,6 +5,7 @@
 #include "navigation.h"
 
 Button button = Button(14,PULLDOWN);
+const int ledPin = 15;
 PololuQTRSensorsRC qtr((unsigned char[]) {2,3,4,5,6,7,8,9}, NUM_OF_SENSORS);
 
 void setup(){
@@ -12,6 +13,7 @@ void setup(){
   Serial.begin(9600);
 #endif
 
+  pinMode(ledPin, OUTPUT);
   engineSetup();
 
   while(button.isPressed() == false);
@@ -28,12 +30,16 @@ if (pos != LINE_LOST){
       motor(MotorA,-150);
       motor(MotorB,150);
       
+      digitalWrite(ledPin, HIGH);
       delay(200);
+      digitalWrite(ledPin, LOW);
     }else if (pos == EDGE_LEFT){
       motor(MotorA,150);
       motor(MotorB,-150);
       
+      digitalWrite(ledPin, HIGH);
       delay(200);
+      digitalWrite(ledPin, LOW);
     }else{
 
       int error = pos - MIDDLE_POS;
