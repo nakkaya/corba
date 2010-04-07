@@ -47,23 +47,35 @@ int checkEdge(unsigned int* vals){
   if (TRACKING_WHITE == 0){
     if ((vals[NUM_OF_SENSORS - 1] > WHITE_TRASHOLD) &&
 	(vals[NUM_OF_SENSORS - 2] > WHITE_TRASHOLD) &&
-	(vals[NUM_OF_SENSORS - 3] > WHITE_TRASHOLD)){
+	(vals[NUM_OF_SENSORS - 3] > WHITE_TRASHOLD) &&
+	(vals[0] < WHITE_TRASHOLD) &&
+	(vals[1] < WHITE_TRASHOLD) &&
+	(vals[2] < WHITE_TRASHOLD)){
       return EDGE_LEFT;
     }
     if ((vals[0] > WHITE_TRASHOLD) &&
 	(vals[1] > WHITE_TRASHOLD) &&
-	(vals[2] > WHITE_TRASHOLD)){
+	(vals[2] > WHITE_TRASHOLD) &&
+	(vals[NUM_OF_SENSORS - 1] < WHITE_TRASHOLD) &&
+	(vals[NUM_OF_SENSORS - 2] < WHITE_TRASHOLD) &&
+	(vals[NUM_OF_SENSORS - 3] < WHITE_TRASHOLD)){
       return EDGE_RIGHT;
     }
   }else{
     if ((vals[NUM_OF_SENSORS - 1] < BLACK_TRASHOLD) &&
 	(vals[NUM_OF_SENSORS - 2] < BLACK_TRASHOLD) &&
-	(vals[NUM_OF_SENSORS - 3] < BLACK_TRASHOLD)){
+	(vals[NUM_OF_SENSORS - 3] < BLACK_TRASHOLD) &&
+	(vals[0] > BLACK_TRASHOLD) &&
+	(vals[1] > BLACK_TRASHOLD) &&
+	(vals[2] > BLACK_TRASHOLD)){
       return EDGE_LEFT;
     }
     if ((vals[0] < BLACK_TRASHOLD) &&
 	(vals[1] < BLACK_TRASHOLD) &&
-	(vals[2] < BLACK_TRASHOLD)){
+	(vals[2] < BLACK_TRASHOLD) &&
+	(vals[NUM_OF_SENSORS - 1] > BLACK_TRASHOLD) &&
+	(vals[NUM_OF_SENSORS - 2] > BLACK_TRASHOLD) &&
+	(vals[NUM_OF_SENSORS - 3] > BLACK_TRASHOLD)){
       return EDGE_RIGHT;
     }
   }
