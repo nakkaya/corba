@@ -99,6 +99,8 @@ int readLine(PololuQTRSensorsRC* qtr){
 
   if (lineLost(val) == true)
     Serial.print("\n");
+  if (checkEdge(val) != 0)
+    Serial.print("\n");
 #endif
 
   if (lineLost(val) == true)
