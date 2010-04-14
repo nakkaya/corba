@@ -11,8 +11,7 @@
 #define EDGE_RIGHT -3
 
 void calibrate(PololuQTRSensorsRC* qtr){
-  motor(MotorA,150);
-  motor(MotorB,-150);
+  revolve(150,REVOLVE_LEFT);
 
   int i;
   for (i = 0; i < 125; i++){
@@ -20,8 +19,7 @@ void calibrate(PololuQTRSensorsRC* qtr){
     delay(20);
   }
 
-  motor(MotorA,0);
-  motor(MotorB,0);
+  revolve(0,REVOLVE_LEFT);
 }
 
 bool lineLost(unsigned int* vals){

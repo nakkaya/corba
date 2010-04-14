@@ -15,6 +15,9 @@
 #define FORWARD 0
 #define REVERSE 1
 
+#define REVOLVE_LEFT 0
+#define REVOLVE_RIGHT 1
+
 void engineSetup(){
   // motor pins must be outputs
   pinMode(PwmPinMotorA, OUTPUT);
@@ -43,4 +46,15 @@ void motor(int motor,int speed){
   digitalWrite(dirPin, dir);
 #endif
 }
+
+void revolve(int speed , int direction){
+  if (direction == REVOLVE_LEFT ){
+    motor(MotorA,speed);
+    motor(MotorB,-speed);
+  }else{
+    motor(MotorA,-speed);
+    motor(MotorB,speed);
+  } 
+}
+
 #endif
