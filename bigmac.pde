@@ -27,19 +27,11 @@ void loop(){
 if (pos != LINE_LOST){
 
     if (pos == EDGE_RIGHT){
-      motor(MotorA,-150);
-      motor(MotorB,150);
-      
-      digitalWrite(ledPin, HIGH);
-      delay(200);
-      digitalWrite(ledPin, LOW);
+      motor(MotorA,-255);
+      motor(MotorB,255);
     }else if (pos == EDGE_LEFT){
-      motor(MotorA,150);
-      motor(MotorB,-150);
-      
-      digitalWrite(ledPin, HIGH);
-      delay(200);
-      digitalWrite(ledPin, LOW);
+      motor(MotorA,255);
+      motor(MotorB,-255);
     }else{
 
       int error = pos - MIDDLE_POS;
