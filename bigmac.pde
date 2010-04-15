@@ -19,6 +19,9 @@ void setup(){
   while(button.isPressed() == false);
   calibrate(&qtr);
   while(button.isPressed() == false);
+
+  motor(MotorA,255);
+  motor(MotorB,255);
 }
 
 void loop(){
