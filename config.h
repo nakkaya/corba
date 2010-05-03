@@ -5,6 +5,7 @@
 #define MIDDLE_POS (((NUM_OF_SENSORS*1000) - 1000) / 2)
 
 #define TRACKING_WHITE 1
+//#define EDGED_TRACK
 
 #define WHITE_TRASHOLD 300
 #define BLACK_TRASHOLD 100

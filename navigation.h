@@ -105,8 +105,10 @@ int readLine(PololuQTRSensorsRC* qtr){
 
   if (lineLost(val) == true)
     return LINE_LOST;
+#ifdef EDGED_TRACK
   else if (checkEdge(val) != 0)
     return checkEdge(val);
+#endif
   else
     return line;
 }
