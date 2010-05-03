@@ -11,7 +11,7 @@
 #define EDGE_RIGHT -3
 
 void calibrate(PololuQTRSensorsRC* qtr){
-  revolve(150,REVOLVE_LEFT);
+  revolve(CALIBRATION_SPEED,REVOLVE_LEFT);
 
   int i;
   for (i = 0; i < 125; i++){

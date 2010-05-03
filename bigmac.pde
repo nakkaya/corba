@@ -20,8 +20,8 @@ void setup(){
   calibrate(&qtr);
   while(button.isPressed() == false);
 
-  motor(MotorA,255);
-  motor(MotorB,255);
+  motor(MotorA,FORWARD_MAX);
+  motor(MotorB,FORWARD_MAX);
 }
 
 void loop(){
@@ -30,21 +30,21 @@ void loop(){
 if (pos != LINE_LOST){
 
     if (pos == EDGE_RIGHT){
-      motor(MotorA,-255);
-      motor(MotorB,255);
+      motor(MotorA,REVERSE_MAX);
+      motor(MotorB,FORWARD_MAX);
     }else if (pos == EDGE_LEFT){
-      motor(MotorA,255);
-      motor(MotorB,-255);
+      motor(MotorA,FORWARD_MAX);
+      motor(MotorB,REVERSE_MAX);
     }else{
 
       int error = pos - MIDDLE_POS;
-      int m1Speed = 255;
-      int m2Speed = 255;
+      int m1Speed = FORWARD_MAX;
+      int m2Speed = FORWARD_MAX;
 
       if (error < 0)
-	m1Speed = map(error,-MIDDLE_POS,0,-255,255);
+	m1Speed = map(error,-MIDDLE_POS,0,REVERSE_MAX,FORWARD_MAX);
       else
-	m2Speed = map(error,0,MIDDLE_POS,255,-255);
+	m2Speed = map(error,0,MIDDLE_POS,FORWARD_MAX,REVERSE_MAX);
 
 #ifdef DEBUG
       Serial.print(error);   Serial.print(" ");
