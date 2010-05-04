@@ -10,6 +10,8 @@
 #define EDGE_LEFT -2
 #define EDGE_RIGHT -3
 
+int TRACKING_WHITE = 1;
+
 void calibrate(PololuQTRSensorsRC* qtr){
   revolve(CALIBRATION_SPEED,REVOLVE_LEFT);
 
@@ -39,6 +41,16 @@ bool lineLost(unsigned int* vals){
     }
   }
   return lost;
+}
+
+void detectTrackColor(unsigned int* vals){
+  if ((vals[0] < WHITE_TRASHOLD) &&
+      (vals[NUM_OF_SENSORS - 1] < WHITE_TRASHOLD))
+    TRACKING_WHITE = 0;
+
+  if ((vals[0] > BLACK_TRASHOLD) &&
+      (vals[NUM_OF_SENSORS - 1]> BLACK_TRASHOLD))
+    TRACKING_WHITE = 1;
 }
 
 int checkEdge(unsigned int* vals){ 
@@ -83,11 +95,14 @@ int checkEdge(unsigned int* vals){
 int readLine(PololuQTRSensorsRC* qtr){
   unsigned int val[NUM_OF_SENSORS];
   qtr->readCalibrated(val);
+
+  detectTrackColor(val);
+
   int line = qtr->readLine(val,QTR_EMITTERS_ON,TRACKING_WHITE);
 
 #ifdef DEBUG
-  Serial.print(line);
-  Serial.print(" R< ");
+  Serial.print(TRACKING_WHITE);   Serial.print(" ");
+  Serial.print(line);   Serial.print(" R< ");
   Serial.print(val[0]); Serial.print(" ");
   Serial.print(val[1]); Serial.print(" ");
   Serial.print(val[2]); Serial.print(" ");
