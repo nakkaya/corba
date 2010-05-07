@@ -28,13 +28,13 @@ bool lineLost(unsigned int* vals){
   bool lost = true;
   
   if (TRACKING_WHITE == 0){
-    for(int i=0;i<NUM_OF_SENSORS - 1;i++){
+    for(int i=0;i<NUM_OF_SENSORS;i++){
       if (vals[i] > WHITE_TRASHOLD){
 	lost =false;
       }
     }
   }else{
-    for(int i=0;i<NUM_OF_SENSORS - 1;i++){
+    for(int i=0;i<NUM_OF_SENSORS;i++){
       if (vals[i] < BLACK_TRASHOLD){
 	lost =false;
       }
@@ -113,9 +113,9 @@ int readLine(PololuQTRSensorsRC* qtr){
   Serial.print(val[7]); Serial.print(" >L ");
 
   if (lineLost(val) == true)
-    Serial.print("\n");
+    Serial.print("Line Lost \n");
   if (checkEdge(val) != 0)
-    Serial.print("\n");
+    Serial.print("Edge \n");
 #endif
 
   if (lineLost(val) == true)
