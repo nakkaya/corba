@@ -4,7 +4,7 @@
 void waitButton(){
   digitalWrite(LED_PIN, HIGH);
 
-  while(digitalRead(BUTTON_PIN)){
+  while(digitalRead(BUTTON_PIN) == LOW){
     delay(100);
   }
 
