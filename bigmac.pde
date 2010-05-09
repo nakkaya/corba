@@ -20,6 +20,8 @@ void setup(){
   calibrate(&qtr);
   while(button.isPressed() == false);
 
+  delay(2000);
+
   motor(MotorA,FORWARD_MAX);
   motor(MotorB,FORWARD_MAX);
 }
